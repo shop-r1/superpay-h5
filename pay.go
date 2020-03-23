@@ -19,7 +19,7 @@ func NewPay(merchantId, authenticationCode string) *Pay {
 	}
 }
 
-func (e Pay) CreateOrderWx(req *CreateOrderReqWx) (string, error) {
+func (e Pay) CreateOrderWx(req *CreateOrderReqWx) (*CreateOrderRspWx, error) {
 	u := newWxReqUrl()
 	req.MerchantId = e.MerchantId
 	req.AuthenticationCode = e.AuthenticationCode
@@ -28,20 +28,20 @@ func (e Pay) CreateOrderWx(req *CreateOrderReqWx) (string, error) {
 	u.RawQuery = getEncodeQuery(*req, true, u.Query()).Encode()
 	rsp, err := http.Get(u.String())
 	if err != nil {
-		return "", err
+		return nil, err
 	}
 	defer rsp.Body.Close()
 	var rb []byte
 	rb, err = ioutil.ReadAll(rsp.Body)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
-	var response CreateOrderRspWx
-	err = json.Unmarshal(rb, &response)
+	response := &CreateOrderRspWx{}
+	err = json.Unmarshal(rb, response)
 	if err != nil {
-		return "", err
+		return nil, err
 	}
-	return response.QRCodeURL, err
+	return response, err
 }
 
 func (e Pay) CreateOrderAlipay(req *CreateOrderReqAlipay) (string, error) {
