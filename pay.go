@@ -27,6 +27,7 @@ func (e Pay) CreateOrderWx(req *CreateOrderReqWx) (*CreateOrderRspWx, error) {
 	req.setToken()
 	req.ReturnTarget = "WX"
 	u.RawQuery = getEncodeQuery(*req, true, u.Query()).Encode()
+	fmt.Println(u.RawQuery)
 	fmt.Println(u.String())
 	rsp, err := http.Get(u.String())
 	if err != nil {
