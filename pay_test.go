@@ -7,8 +7,8 @@ import (
 )
 
 var (
-	MerchantId         = "xxxx"
-	AuthenticationCode = "xxxx"
+	MerchantId         = "71874"
+	AuthenticationCode = "cPZhP0rPHDrQxYgdepSgPbjUqjBeN5AG"
 )
 
 func TestPay_CreateOrderAlipay(t *testing.T) {
@@ -110,7 +110,7 @@ func TestPay_CreateOrderWx(t *testing.T) {
 			args{req: &CreateOrderReqWx{
 				CreateOrderReq: CreateOrderReq{
 					ProductTitle:    "abca",
-					MerchantTradeNo: "abcb",
+					MerchantTradeNo: "540598752433143809",
 					Currency:        "AUD",
 					TotalAmount:     0.01,
 					CreateTime:      time.Now().Add(-8 * time.Hour).Format("2006-01-02 15:04:05"),
@@ -131,7 +131,7 @@ func TestPay_CreateOrderWx(t *testing.T) {
 			args{req: &CreateOrderReqWx{
 				CreateOrderReq: CreateOrderReq{
 					ProductTitle:    "abca",
-					MerchantTradeNo: "abcb",
+					MerchantTradeNo: "540598752433143809",
 					Currency:        "AUD",
 					//TotalAmount:        0.05,
 					CreateTime:      time.Now().Add(-8 * time.Hour).Format("2006-01-02 15:04:05"),

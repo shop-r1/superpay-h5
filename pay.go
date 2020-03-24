@@ -24,6 +24,7 @@ func (e Pay) CreateOrderWx(req *CreateOrderReqWx) (*CreateOrderRspWx, error) {
 	u := newWxReqUrl()
 	req.MerchantId = e.MerchantId
 	req.AuthenticationCode = e.AuthenticationCode
+	req.MerchantTradeNo += "S"
 	req.setToken()
 	req.ReturnTarget = "WX"
 	u.RawQuery = getEncodeQuery(*req, true, u.Query()).Encode()
