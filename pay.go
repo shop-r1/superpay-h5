@@ -2,6 +2,7 @@ package superpay_h5
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 )
@@ -26,6 +27,7 @@ func (e Pay) CreateOrderWx(req *CreateOrderReqWx) (*CreateOrderRspWx, error) {
 	req.setToken()
 	req.ReturnTarget = "WX"
 	u.RawQuery = getEncodeQuery(*req, true, u.Query()).Encode()
+	fmt.Println(u.String())
 	rsp, err := http.Get(u.String())
 	if err != nil {
 		return nil, err
