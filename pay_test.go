@@ -1,9 +1,10 @@
 package superpay_h5
 
 import (
-	"fmt"
 	"testing"
 	"time"
+
+	"github.com/sanity-io/litter"
 )
 
 var (
@@ -82,7 +83,7 @@ func TestPay_CreateOrderAlipay(t *testing.T) {
 				t.Errorf("CreateOrderAlipay() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
-			fmt.Println(got)
+			litter.Dump(got)
 		})
 	}
 }
@@ -155,7 +156,7 @@ func TestPay_CreateOrderWx(t *testing.T) {
 				t.Errorf("CreateOrderWx() error = %v, wantErr %v", err, tt.wantErr)
 				return
 			}
-			fmt.Println(got)
+			litter.Dump(got)
 		})
 	}
 }

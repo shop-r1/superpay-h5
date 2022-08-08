@@ -68,6 +68,5 @@ func (e *CreateOrderReq) setToken() {
 	s := fmt.Sprintf("merchant_id=%s&authentication_code=%s&merchant_trade_no=%s&total_amount=%s",
 		e.MerchantId, e.AuthenticationCode, e.MerchantTradeNo,
 		strconv.FormatFloat(e.TotalAmount, 'f', 2, 64))
-	fmt.Println(s)
 	e.Token = md5V(s)
 }
